@@ -82,7 +82,7 @@ def vardini():
     words = ['kartupelis', 'tomats', 'burkans', 'sipols', 'kiploks', 'selerija', 'pretpulkstenraditajvirziens', 'saursliezudzelzcels']
     return random.choice(words).lower()
 
-# spele #
+# speles definicijas funkcijam #
 
 def spele():
     word = vardini()
@@ -98,8 +98,9 @@ def spele():
     print(word_completion)
     print("\n")
 
-#
-
+#speles funkcijas#
+    
+#burtu minesanas funkcijas#
     while not guessed and attempts > 0:
         guess = input("mini burtu!").lower()
         if len(guess) == 1 and guess.isalpha():
@@ -110,7 +111,7 @@ def spele():
                 attempts -= 1
                 guessed_letter.append(guess)
             else:
-                print(f"apsveicu! {guess} ir šajā vārdā!")
+                print(f"Apsveicu! {guess} ir šajā vārdā!")
                 guessed_letter.append(guess)
                 word_as_list = list(word_completion)  
                 indices = [i for i, letter in enumerate(word) if letter == guess]
@@ -119,9 +120,10 @@ def spele():
                 word_completion = "".join(word_as_list)
                 if "_" not in word_completion:
                     guessed = True
+                    #vardu minesanas funkcijas#
         elif len(guess) == len(word) and guess.isalpha():
             if guess in guessed_word:
-                print(f"tu jau esi minējis {guess}!")
+                print(f"Tu jau esi minējis {guess}!")
             elif guess != word:
                 print(f"{guess} nav pareizs vārds!")
                 attempts -= 1
@@ -130,16 +132,16 @@ def spele():
                 guessed = True
                 word_completion = word
         else:
-            print("ta nu gan nevar")
+            print(".")
             
         print(meginajumi(attempts))
         print(word_completion)
         print("\n")
-    
+    #mnl if guessed ir passaprotami#
     if guessed:
-        print(f"apsveicu! tu uzminēji vārdu '{word}'!")
+        print(f"Apsveicu! tu uzminēji vārdu '{word}'!")
     else:
-        print(f"Nepareizi!!! vārds bija '{word}'! Mēģini vēlreiz!")
+        print(f"Nepareizi! vārds bija '{word}'! Mēģini vēlreiz!")
 
 if __name__ == "__main__":
     spele()
